@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Attendance & Salary Processing System</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <i data-lucide="calculator"></i>
+      <span>Payroll & Attendance Hub</span>
+    </div>
+    <div class="actions">
+      <button id="exportTxtBtn" class="btn btn-secondary">
+        <i data-lucide="file-text"></i> Download TXT Report
+      </button>
+      <button id="exportCsvBtn" class="btn btn-secondary">
+        <i data-lucide="download"></i> Download CSV
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- KPI Summary Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon blue"><i data-lucide="users"></i></div>
+        <div class="kpi-info">
+          <span class="title">Total Employees</span>
+          <h2 id="kpiTotalEmp">0</h2>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon green"><i data-lucide="indian-rupee"></i></div>
+        <div class="kpi-info">
+          <span class="title">Total Payroll</span>
+          <h2 id="kpiTotalPayroll">Rs.0</h2>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon orange"><i data-lucide="alert-triangle"></i></div>
+        <div class="kpi-info">
+          <span class="title">Below Attendance Threshold (&lt;75%)</span>
+          <h2 id="kpiLowAttendance">0</h2>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-icon purple"><i data-lucide="clock"></i></div>
+        <div class="kpi-info">
+          <span class="title">Total Overtime Pay</span>
+          <h2 id="kpiTotalOvertime">Rs.0</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Layout: Form + Table -->
+    <div class="content-grid">
+
+      <!-- Form Section -->
+      <section class="card form-card">
+        <h3><i data-lucide="user-plus"></i> Add New Employee</h3>
+        <form id="employeeForm">
+          <div class="form-group">
+            <label for="empId">Employee ID</label>
+            <input type="text" id="empId" placeholder="e.g. EMP1003" required>
+          </div>
+
+          <div class="form-group">
+            <label for="empName">Full Name</label>
+            <input type="text" id="empName" placeholder="e.g. Priya Sharma" required>
+          </div>
+
+          <div class="form-group">
+            <label for="empDept">Department</label>
+            <select id="empDept" required>
+              <option value="">Select Department</option>
+              <option value="Finance">Finance</option>
+              <option value="HR">HR</option>
+              <option value="IT">IT</option>
+              <option value="Operations">Operations</option>
+              <option value="Marketing">Marketing</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="daysPresent">Days Present (Max 26)</label>
+              <input type="number" id="daysPresent" min="0" max="26" value="22" required>
+            </div>
+
+            <div class="form-group">
+              <label for="overtimeHours">OT Hours</label>
+              <input type="number" id="overtimeHours" min="0" value="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="basicSalary">Basic Base Salary (Rs.)</label>
+            <input type="number" id="basicSalary" min="0" step="500" value="35000" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i data-lucide="plus-circle"></i> Add Record
+          </button>
+        </form>
+      </section>
+
+      <!-- Data Table Section -->
+      <section class="card table-card">
+        <div class="table-header">
+          <h3><i data-lucide="list"></i> Employee Records</h3>
+          
+          <div class="table-filters">
+            <div class="search-box">
+              <i data-lucide="search"></i>
+              <input type="text" id="searchInput" placeholder="Search name or ID...">
+            </div>
+
+            <select id="filterStatus">
+              <option value="ALL">All Statuses</option>
+              <option value="OK">OK (&ge;75%)</option>
+              <option value="Below Threshold">Below Threshold (&lt;75%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Dept</th>
+                <th>Days Present</th>
+                <th>Attendance %</th>
+                <th>Basic Salary</th>
+                <th>OT Pay (1.5x)</th>
+                <th>Final Salary</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="employeeTableBody">
+              <!-- Dynamically populated via script.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
