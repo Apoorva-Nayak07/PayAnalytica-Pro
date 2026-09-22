@@ -1,12 +1,15 @@
 # 📊 Employee Attendance & Salary Processing System
 
+[![Live Demo](https://img.shields.io/badge/Demo-Live_Website-2563eb?style=for-the-badge&logo=netlify)](https://pay-analytics-pro.netlify.app/)
+
 > A comprehensive solution featuring an **interactive web dashboard** and a **Python analytics script** designed to model employee records, calculate overtime and attendance percentages, flag compliance thresholds, and export reports.
 
 ---
 
-## 📸 Overview
+## 🌐 Live Application
 
-![Dashboard Preview](https://via.placeholder.com/1200x600?text=Employee+Attendance+%26+Salary+Dashboard)
+Click below to open and interact with the live dashboard deployed on Netlify:
+👉 **[pay-analytics-pro.netlify.app](https://pay-analytics-pro.netlify.app/)**
 
 ---
 
